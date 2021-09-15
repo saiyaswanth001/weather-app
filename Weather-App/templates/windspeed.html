@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Wind</title>
+</head>
+<head>
+		<style>
+
+			#card
+			{
+				position:relative;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100.2vh;
+				margin: 0;
+				background: #222;
+				background-size: cover;
+				border-radius: 10px;
+
+			}
+
+			#body
+			{
+				display: flex;
+				background: #dddddd;
+				padding: 1em;
+				border-radius: 30px;
+				height: 550px;
+				width: 1000px;
+				position: absolute;
+				background-image: url("https://source.unsplash.com/1600x900/?wind");
+				background-size: cover;
+			}
+
+			.back 
+			{
+				position: absolute;
+				top: 35.3%;
+				left: 13%;
+				transform:translate(-50%, -50%);
+				margin: 0;
+				padding: 0;
+				display: flex;
+				list-style: none;
+				width: 47px;
+				height: 49px;
+				background: #262626;
+				margin: 0 10px;
+				border-radius: 50px;
+				transition: .5s;
+			}
+			.back:hover
+			{
+				background: #0070ff;
+			}
+			.back span
+			{
+				position: absolute;
+				width: 20px;
+				height: 20px;
+				border: 4px solid #fff;
+				transition: .5s;
+			}
+			.back.back span
+			{
+				top: 46%;
+				left: 37%;
+				transform: translateY(-40%) rotate(-45deg);
+				border-right: none;
+				border-bottom: none;
+			}
+			.back.back:hover span
+			{
+				left: 16%;
+			}
+			.back.back span:before 
+			{
+				content: "";
+				position: absolute;
+				width: 38px;
+				height: 4px;
+				background: #fff;
+				transform-origin: left;
+				transform: rotate(45deg) translate(-2px,-1px) scaleX(0);
+				transition: .5s;
+			}
+			.back.back:hover span:before
+			{
+				transform: rotate(45deg) translate(-2px, -1px) scaleX(1);
+			}
+			.blackblurBox
+			{
+				position:absolute;
+				top:24%;
+				left:11%;
+				opacity:0.8;
+				height:300px;
+				width:800px;
+				background-color: #454545;
+				border-radius: 10px;
+			}
+			p
+			{
+				position:absolute;
+				top:34%;
+				left:41%;
+				font-size: 85px;
+				font-weight: bold;
+				color: white;
+			}
+			#location
+			{
+				position:absolute;
+				top:11%;
+				left:6.5%;
+				margin: 2em;
+				font-weight:bold;
+				font-size:55px;
+				height:65px;
+				width:700px;
+				text-align:center;
+				color:linear-gradient(to bottom,white 10%,blue 70%);
+				text-shadow:2px 2px 3px black;
+				background-color: beige;
+				border-radius:100px;
+				font-family:oblique;
+			}
+			.units
+			{
+				position:absolute;
+				top:54%;
+				left:57%;
+				font-size: 22px;
+			}		
+		</style>
+</head>
+<body>
+<div id="card">
+	<div id="body">
+		<div class=blackblurBox>	
+		</div>
+			<ul>
+				<A HREF="http://127.0.0.1:5000"  class="back"><span></span></A>
+				<A HREF="http://127.0.0.1:5000/results" class="home"><span></span></A>
+			</ul>
+		
+		<p>{{ wind }}</p><p class="units">meter/sec</p>
+		<h1 id="location">{{ location }}</h1>
+	</div>
+</div>
+</body>
+</html>

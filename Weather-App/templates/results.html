@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Weather_Dashboard</title>
+</head>
+<head>
+	<style>
+		#card
+		{
+			position:relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100.2vh;
+			margin: 0;
+			background: #222;
+			background-size: cover;
+			border-radius: 10px;
+		}
+		#body
+		{
+			display: flex;
+			background: #dddddd;
+			padding: 1em;
+			border-radius: 30px;
+			height: 550px;
+			width: 1000px;
+			position: absolute;
+			background-image: url("https://source.unsplash.com/1600x900/?weather,nature");
+			background-size: cover;
+		}
+
+		.back 
+			{
+				position: absolute;
+				top: 8%;
+				left: 3%;
+				transform:translate(-50%, -50%);
+				margin: 0;
+				padding: 0;
+				display: flex;
+				list-style: none;
+				width: 49px;
+				height: 48px;
+				background: #262626;
+				margin: 0 10px;
+				border-radius: 50px;
+				transition: .5s;
+			}
+			.back:hover
+			{
+				background: #0070ff;
+			}
+			.back span
+			{
+				position: absolute;
+				width: 20px;
+				height: 20px;
+				border: 4px solid #fff;
+				transition: .5s;
+			}
+			.back.back span
+			{
+				top: 46%;
+				left: 40%;
+				transform: translateY(-40%) rotate(-45deg);
+				border-right: none;
+				border-bottom: none;
+			}
+			.back.back:hover span
+			{
+				left: 16%;
+			}
+			.back.back span:before 
+			{
+				content: "";
+				position: absolute;
+				width: 38px;
+				height: 4px;
+				background: #fff;
+				transform-origin: left;
+				transform: rotate(45deg) translate(-2px,-1px) scaleX(0);
+				transition: .5s;
+			}
+			.back.back:hover span:before
+			{
+				transform: rotate(45deg) translate(-2px, -1px) scaleX(1);
+			}
+
+		
+		.blackblurBox
+		{
+			position:absolute;
+			top:10%;
+			left:11%;
+			opacity:0.8;
+			height:400px;
+			width:800px;
+			background-color: #454545;
+			border-radius: 10px;
+		}
+		#location
+		{
+			position:absolute;
+			top:-13%;
+			left:-8.5%;
+			margin: 2em;
+			font-weight:bold;
+			font-size:55px;
+			height:65px;
+			width:700px;
+			text-align:center;
+			color:linear-gradient(to bottom,white 10%,blue 70%);
+			text-shadow:2px 2px 3px black;
+			background-color: beige;
+			border-radius:100px;
+			font-family:oblique;
+		}
+		#country
+		{
+			position:absolute;
+			top:14.5%;
+			left:85%;
+			background-color:#666666;
+			color:white;
+			border-radius:30px;
+			width:50px;
+			height:31.5px;
+			font-size:27px;
+			text-align:center;
+		}
+		#temp
+		{
+			
+			position:absolute;
+			top:19%;
+			left:36%;
+			font-size:80px;
+			color:beige;
+		}
+		#degreeCelsius
+		{
+			position:absolute;
+			top:33%;
+			left:60.5%;
+			color:white;
+			font-size:30px;
+			
+		}
+		#description
+		{
+			position:absolute;
+			top:69%;
+			left:36%;
+			color:#ffffff;
+			font-size:22px;
+			border-radius:100px;
+			height:30px;
+			width:200px;
+			text-align:center;
+		}
+		#longitude
+		{
+			position:absolute;
+			top:58%;
+			left:79%;
+			color:#fff;
+			font-size:18px;
+		}
+		
+		#latitude
+		{
+			color:#fff;
+			position:absolute;
+			top:58%;
+			left:5%;
+			font-size:18px;
+		}
+		#windform
+		{
+			position:absolute;
+			top:83%;
+			left:3%;
+    	}
+
+
+		
+		#pressureform
+		{
+			position:absolute;
+			top:83%;
+			left:24%;
+		}
+		#humidity
+		{
+			position:absolute;
+			top:83%;
+			left:44%;
+		}
+		#sunriseform
+		{
+			position:absolute;
+			top:83%;
+			left:65%;
+		}
+		#sunsetform
+		{
+			position:absolute;
+			top:83%;
+			left:84%;
+		}
+
+		.buttongradient
+		{
+			background: none;
+			color: #3498db;
+			border: 1px solid #3498db;
+			border-radius: 30px;
+			background-size: 400%;
+			font-family: "poppins", sans-serif;
+			padding: 10px 20px;
+			cursor: pointer;
+			margin: 10px;
+			transition: 0.8s;
+			overflow: hidden;
+		}
+		.buttongradient:hover
+		{
+			color: #fff;
+
+		}
+		.buttongradient::before
+		{
+			content: "";
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			background: #3498db;
+			z-index: -1;
+			transition: 0.8s;
+			transform-origin: 0 0;
+			transition-timing-function: cubic-bezier(0.5,1.6,0.4,0.7);
+		}
+		.buttongradient::before
+		{
+			top: 0;
+			border-radius: 0 0 50% 50%;
+		}
+		.buttongradient:hover::before
+		{
+			height: 180%;
+		}
+		
+		
+		#backbutton
+		{
+			position:absolute;
+			top:5%;
+			left:2%;
+			
+			
+		}
+		.icon{
+			position:absolute;
+			top: 226px;
+			left: 291px;
+			size: 0ch;
+		}
+		
+	</style>
+</head>
+<body>
+<div id="card">
+	<div id="body">
+	<div id="maindiv">
+		<div class=blackblurBox>
+			<div id="weatherResults">
+				<nav>
+					<A HREF="http://127.0.0.1:5000" class="back"><span></span></A>
+				</nav>
+				<h1 id="location">{{ location }}</h1>
+				<h1 id="country">{{ country }}</h1>
+				<h2 id="temp">{{ temp }}</h2><p id="degreeCelsius">°C</p>
+
+				<form id="windform" action="{{ url_for('render_windspeed') }}" 	method="post">
+					<input  id="windButton" class="buttongradient" type="submit" value="Windspeed">
+				</form>
+				<form id="pressureform" action="{{ url_for('render_pressure') }}" method="post">
+					<input  id="pressureButton" class="buttongradient" type="submit" value="Pressure" >
+				</form>
+				<form id="humidity" action="{{ url_for('render_humidity') }}" method="post">
+					<input  id="humidityButton" class="buttongradient" type="submit" value="Humidity">
+				</form>
+				<form id="sunriseform" action="{{ url_for('render_sunrise') }}" method="post">
+					<input  id="sunriseButton" class="buttongradient" type="submit" value="Sunrise">
+				</form>
+				<form id="sunsetform" action="{{ url_for('render_sunset') }}" method="post">
+					<input  id="sunsetButton" class="buttongradient" type="submit" value="Sunset">
+				</form>
+
+				<h1 id="description">{{ weather }}</h1>
+				<div class='icon'>
+					<img src="http://openweathermap.org/img/wn/{{ icon }}.png" width="60px">
+					<img src="http://openweathermap.org/img/wn/{{ icon }}.png" width="60px">
+					<img src="http://openweathermap.org/img/wn/{{ icon }}.png" width="60px">
+				</div>
+				<h1 id="longitude">Longitude : {{ longitude }}</h1>
+				<h1 id="latitude">Latitude : {{ latitude }}</h1>
+			</div>
+		</div>
+	</div>
+	</div>
+</div>
+</body>
+</html>

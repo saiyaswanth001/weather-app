@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Weather_Dashboard</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<head>
+		<style>
+			#card
+			{
+				position:relative;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				height: 100.2vh;
+				margin: 0;
+				background-image:url("https://source.unsplash.com/1600x900/?landscape,nature,water");
+				background-size: cover;
+				border-radius: 10px;
+
+			}
+
+			#body
+			{
+				display: flex;
+				padding: 2em;
+				border-radius: 30px;
+				height:530px;
+				width:710px;
+				position:absolute;
+				background-size:cover;
+			}
+			#maindivS
+			{
+				padding-right: 1em;
+				
+			}
+			.blackblurBox
+			{
+				position:absolute;
+				top:10%;
+				left:16%;
+				opacity:0.8;
+				height:350px;
+				width:581px;
+				background-color:#171717;
+				border-radius: 10px;
+
+			}
+			
+
+			#weatherInput
+			{
+				border: none;
+				outline: none;
+				position:absolute;
+				padding: 0.1em;
+				top:40%;
+				left:26%;
+				width:45%;
+				height: 10%;
+				border-radius:18%;
+				font-family: 'poppins', sans-serif;
+				font-size: 110%;
+
+			}
+			#mainweatherText
+			{
+				position:absolute;
+				font-family: "poppins",  sans-serif;
+				top:-11%;
+				left:-3%;
+				margin: 2em;
+				font-size:37px;
+				height:60px;
+				width:450px;
+				text-align:center;
+				color:white;
+				text-shadow:2px 2px 3px black;
+				background-color: beige;
+				border-radius:100px;
+				
+			}
+
+			#SubmitButton
+			{
+				position: absolute;
+				height: 42px;
+				width: 150px;
+				transform: translate(-50%, -50%);
+			}
+
+			#SubmitButton
+			{
+				background: none;
+				color: #fff;
+				top: 231px;
+				left: 287px;
+				width: 165px;
+				height: 45px;
+				border: 1px solid #338033;
+				font-size: 18px;
+				border-radius: 4px;
+				transition: .6s;
+				overflow: hidden;
+			}
+
+			#SubmitButton:focus
+			{
+				outline: none;
+
+			}
+
+			#SubmitButton:before 
+			{
+				content: "";
+				display: block;
+				position: absolute;
+				background: rgba(255, 255, 255, .5);
+				width: 60px;
+				height: 100%;
+				left: 0;
+				top: 0;
+				opacity: .5s;
+				filter: blur(30px);
+				transform: translateX(-130px) skewX(-15deg);
+			}
+			#SubmitButton:after 
+			{
+				content: "";
+				display: block;
+				position: absolute;
+				background: rgba(255, 255, 255, .2);
+				width: 30px;
+				height: 100%;
+				left: 30px;
+				top: 0;
+				opacity: .5s;
+				filter: blur(30px);
+				transform: translate(-100px) scale(-15deg);
+
+			}
+
+			#SubmitButton:hover 
+			{
+				background: #339033;
+				cursor: pointer;
+			}
+
+			#SubmitButton:hover:before 
+			{
+				transform: translateX(300px) skewX(-15deg);
+				opacity: .6;
+				transition: .7s;
+			} 
+
+			#SubmitButton:hover:after
+			{
+				transform: translateX(300px) skewX(-15deg);
+				opacity: 1;
+				transition: .7s;
+			} 
+
+
+		</style>
+
+
+</head>
+<body>
+<div id="card">
+	<div id="body">
+		<div id="maindiv">
+			<div class=blackblurBox>
+				<h2 id="mainweatherText">Weather Forecasting</h2>
+					
+						<form id="weatherForm" action="{{ url_for('render_results') }}" method="post">
+							<input  id="weatherInput" type="text" name="city_name" placeholder="Search"><br><br><br>
+							<input  id="SubmitButton" type="Submit">
+						</form>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>
